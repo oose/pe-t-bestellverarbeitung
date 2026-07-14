@@ -1,0 +1,873 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>OrderMatic Pro™ 3000 — Enterprise Order Management Solutions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="author" content="webmaster@ordermaticpro.com">
+  <meta name="keywords" content="enterprise, orders, java, spring boot, B2B, synergy, scalable, mission-critical">
+  <style type="text/css">
+    body {
+      background-color: #0d1b2a;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><rect width="40" height="40" fill="%230d1b2a"/><rect x="0" y="19" width="40" height="1" fill="%23162032"/><rect x="19" y="0" width="1" height="40" fill="%23162032"/></svg>');
+      color: #d4c5a9;
+      font-family: "Times New Roman", Georgia, serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    a { color: #c8960c; text-decoration: underline; }
+    a:visited { color: #8b5e0c; }
+    a:hover { color: #ffd700; background-color: #1a0d00; text-decoration: none; }
+
+    .marquee-container {
+      background: linear-gradient(90deg, #4a0000, #8b1c1c, #4a0000);
+      color: #ffd700;
+      font-size: 13px;
+      font-weight: bold;
+      font-family: Arial, "Helvetica Neue", sans-serif;
+      padding: 5px 0;
+      border-top: 2px solid #c8960c;
+      border-bottom: 2px solid #c8960c;
+      letter-spacing: 1px;
+    }
+
+    table.layout {
+      width: 820px;
+      margin: 0 auto;
+      border: 0;
+    }
+
+    td.sidebar {
+      width: 170px;
+      background-color: #10203a;
+      border-right: 3px double #c8960c;
+      border-left: 1px solid #c8960c;
+      vertical-align: top;
+      padding: 10px;
+    }
+
+    td.main {
+      background-color: #0f1e30;
+      border: 1px solid #2a4060;
+      vertical-align: top;
+      padding: 14px;
+    }
+
+    .header-table {
+      width: 820px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #0a0a1a 0%, #1a0a0a 50%, #0a0a1a 100%);
+      border-left: 3px double #c8960c;
+      border-right: 3px double #c8960c;
+      border-bottom: 3px double #c8960c;
+    }
+
+    h1.site-title {
+      color: #c8960c;
+      font-size: 26px;
+      text-align: center;
+      text-shadow: 1px 1px 3px #000000, 0 0 10px #8b1c1c;
+      font-family: "Times New Roman", Georgia, serif;
+      letter-spacing: 2px;
+      margin: 8px 0 4px 0;
+    }
+
+    h2 {
+      color: #c8960c;
+      border-bottom: 1px solid #8b1c1c;
+      border-top: 1px solid #8b1c1c;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      letter-spacing: 1px;
+      padding: 3px 0;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      color: #a07828;
+      font-size: 12px;
+      font-family: "Courier New", monospace;
+      letter-spacing: 1px;
+    }
+
+    .blink {
+      animation: blink-animation 0.5s steps(2, start) infinite;
+      -webkit-animation: blink-animation 0.5s steps(2, start) infinite;
+    }
+    @keyframes blink-animation { to { visibility: hidden; } }
+
+    .box {
+      border: 1px solid #2a4a6a;
+      border-top: 2px solid #8b1c1c;
+      background-color: #0b1826;
+      padding: 10px;
+      margin: 8px 0;
+    }
+
+    .counter-box {
+      border: 2px inset #4a3a00;
+      background-color: #050505;
+      color: #c8960c;
+      font-family: "Courier New", monospace;
+      font-size: 20px;
+      text-align: center;
+      padding: 6px;
+      letter-spacing: 6px;
+    }
+
+    input[type=text], input[type=number], select, textarea {
+      background-color: #08111c;
+      color: #c8a060;
+      border: 1px solid #2a4a6a;
+      border-top: 1px inset #4a6a8a;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      width: 98%;
+      box-sizing: border-box;
+      padding: 3px;
+    }
+
+    input[type=submit], button {
+      background: linear-gradient(180deg, #6a1010, #8b1c1c, #5a0a0a);
+      color: #ffd700;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      border-top: 2px solid #c06060;
+      border-left: 2px solid #c06060;
+      border-right: 2px solid #400000;
+      border-bottom: 2px solid #400000;
+      cursor: pointer;
+      font-size: 12px;
+      padding: 4px 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    input[type=submit]:hover, button:hover {
+      background: linear-gradient(180deg, #8b1c1c, #aa2020, #6a1010);
+      border-top: 2px solid #400000;
+      border-left: 2px solid #400000;
+      border-right: 2px solid #c06060;
+      border-bottom: 2px solid #c06060;
+    }
+
+    .result-box {
+      background-color: #04090e;
+      border: 1px solid #1a3a1a;
+      border-left: 3px solid #c8960c;
+      color: #80c060;
+      font-family: "Courier New", monospace;
+      font-size: 11px;
+      padding: 8px;
+      white-space: pre-wrap;
+      min-height: 40px;
+      margin-top: 6px;
+    }
+
+    .nav-link {
+      display: block;
+      color: #d4c5a9;
+      background: linear-gradient(180deg, #162032, #0f1826);
+      border: 1px solid #2a4060;
+      border-left: 3px solid #8b1c1c;
+      text-align: left;
+      padding: 5px 8px;
+      margin: 3px 0;
+      text-decoration: none;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .nav-link:hover {
+      background: linear-gradient(180deg, #1e3050, #162540);
+      border-left: 3px solid #c8960c;
+      color: #ffd700;
+    }
+
+    .under-construction {
+      text-align: center;
+      font-size: 11px;
+      color: #c8960c;
+      font-family: Arial, sans-serif;
+    }
+
+    iframe.webcam {
+      border: 2px solid #2a4060;
+      border-top: 2px solid #c8960c;
+      background-color: #000000;
+    }
+
+    .guestbook-entry {
+      border-bottom: 1px dotted #2a4060;
+      padding: 5px 4px;
+      margin: 3px 0;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+    }
+
+    .hit-counter-digits {
+      display: inline-block;
+      background: #020408;
+      color: #c8960c;
+      font-family: "Courier New", monospace;
+      font-size: 18px;
+      font-weight: bold;
+      border: 1px inset #4a3a00;
+      padding: 2px 6px;
+      letter-spacing: 4px;
+    }
+
+    .footer {
+      background: linear-gradient(180deg, #080d14, #0a0a0a);
+      border-top: 3px double #c8960c;
+      color: #5a5a5a;
+      text-align: center;
+      font-size: 11px;
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      width: 820px;
+      margin: 0 auto;
+    }
+
+    hr.fancy {
+      border: none;
+      border-top: 1px solid #2a4060;
+      margin: 8px 0;
+    }
+
+    hr.gold {
+      border: none;
+      border-top: 1px solid #5a3a00;
+      margin: 8px 0;
+    }
+
+    .badge {
+      border: 1px outset #3a3a3a;
+      margin: 2px;
+      background: #1a1a1a;
+    }
+
+    .spinning {
+      display: inline-block;
+      animation: spin 8s linear infinite;
+    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    label {
+      color: #a09080;
+      font-size: 11px;
+      font-family: Arial, sans-serif;
+      display: block;
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tagline {
+      color: #7a8a9a;
+      font-size: 11px;
+      font-style: italic;
+      font-family: Georgia, serif;
+      text-align: center;
+    }
+
+    .section-rule {
+      border: none;
+      border-top: 1px solid #8b1c1c;
+      border-bottom: 1px solid #2a4060;
+      margin: 10px 0;
+    }
+
+    .sidebar-heading {
+      text-align: center;
+      font-size: 10px;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      color: #c8960c;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 4px 0;
+    }
+
+    .corporate-badge {
+      background: linear-gradient(180deg, #1a0a00, #0a0500);
+      border: 1px solid #5a3a00;
+      color: #c8960c;
+      font-size: 10px;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 4px;
+      margin: 4px 0;
+    }
+
+    .status-online {
+      color: #40c040;
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP MARQUEE -->
+<div class="marquee-container">
+  <marquee behavior="scroll" direction="left" scrollamount="4">
+    ★ ORDERMATIC PRO™ 3000 — Enterprise Edition ★ Synergizing Your Mission-Critical Order Management Workflows Since 1996 ★ Now Featuring Java 21™ Scalability Solutions ★ Best Viewed in Netscape Navigator 4.0 at 800×600 ★ ISO 9001 Certified* ★ *Certification Pending ★ B2B-Ready™ ★ FREE SHIPPING OVER €50 ★ QUANTITY DISCOUNTS: 3-4 items = 5% OFF ★ 5+ items = 10% OFF ★ USE COUPON CODE SOMMER10 FOR 10% OFF ★
+  </marquee>
+</div>
+
+<!-- HEADER -->
+<table class="header-table" cellpadding="12" cellspacing="0">
+  <tr>
+    <td style="text-align:center; border-right: 1px solid #2a2000;">
+      <h1 class="site-title">
+        ✦ OrderMatic Pro™ 3000 ✦
+      </h1>
+      <div class="tagline">Enterprise-Grade Order Management &amp; Fulfillment Solutions</div>
+      <div style="margin-top:6px; font-size:11px; font-family:Arial,sans-serif; color:#7a8a7a;">
+        <span class="blink" style="color:#8b1c1c;">▶</span>
+        Now Featuring DOMESTIC, EU &amp; INTERNATIONAL Shipping Synergies
+        <span class="blink" style="color:#8b1c1c;">◀</span>
+      </div>
+    </td>
+    <td style="width:110px; text-align:center; vertical-align:middle; padding:8px;">
+      <div style="font-size:36px;" class="spinning">⚙</div>
+      <div style="font-size:9px; color:#5a7a5a; font-family:Arial,sans-serif; letter-spacing:1px; margin-top:2px;">PROCESSING</div>
+    </td>
+  </tr>
+</table>
+
+<!-- MAIN LAYOUT TABLE -->
+<table class="layout" cellpadding="0" cellspacing="0">
+  <tr>
+    <!-- ========== SIDEBAR ========== -->
+    <td class="sidebar">
+      <div class="sidebar-heading">Navigation</div>
+      <hr class="gold">
+
+      <a class="nav-link" href="#create-order">📦 Create Order</a>
+      <a class="nav-link" href="#lookup-order">🔍 Find Order</a>
+      <a class="nav-link" href="#get-total">💰 Get Total</a>
+      <a class="nav-link" href="#api-docs">📜 API Docs</a>
+      <a class="nav-link" href="#guestbook">📝 Guestbook</a>
+      <a class="nav-link" href="#webcam">📷 Server Cam</a>
+
+      <hr class="gold">
+
+      <div style="text-align:center; font-size:10px; font-family:Arial,sans-serif; color:#7a8a9a; text-transform:uppercase; letter-spacing:1px;">
+        Portal Visitors
+      </div>
+      <div style="text-align:center; margin:4px 0;">
+        <div class="hit-counter-digits" id="counter">001337</div>
+      </div>
+
+      <hr class="gold">
+
+      <div class="sidebar-heading">Server Status</div>
+      <div style="text-align:center; font-size:11px; padding:4px 0;">
+        <span class="status-online" id="server-status">● ONLINE</span>
+        <br>
+        <span style="font-size:9px; color:#4a5a6a; font-family:Arial,sans-serif;">Port 8080</span>
+      </div>
+
+      <hr class="gold">
+
+      <div class="sidebar-heading">Accolades</div>
+      <div class="corporate-badge">
+        🏆<br>
+        <span style="font-size:9px;">"Best Enterprise<br>Ordering Portal<br>1996"</span>
+      </div>
+      <div class="corporate-badge">
+        ⭐<br>
+        <span style="font-size:9px;">5-Star Rated<br>WebCrawler™</span>
+      </div>
+
+      <hr class="gold">
+
+      <div class="under-construction">
+        🚧 SECTION<br>UNDER DEVELOPMENT 🚧
+        <br>
+        <span style="font-size:9px;">Q4 1997 Roadmap</span>
+      </div>
+
+      <hr class="gold">
+
+      <div style="text-align:center; font-size:9px; color:#3a4a5a; font-family:Arial,sans-serif; line-height:1.6;">
+        Crafted in Notepad.exe™<br>
+        Resolution: 800×600<br>
+        Browser: Netscape 4.0
+      </div>
+    </td>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <td class="main">
+
+      <!-- CREATE ORDER -->
+      <a name="create-order"></a>
+      <h2>📦 Create New Order <span class="blink" style="font-size:10px; color:#8b1c1c; font-family:Arial,sans-serif;">● LIVE</span></h2>
+
+      <div class="box">
+        <h3>POST /orders — Initiate Order Transaction</h3>
+        <p style="font-size:11px; color:#7a8a9a; font-family:Arial,sans-serif;">Complete the enterprise order intake form below. Fields marked <span style="color:#8b1c1c;">*</span> are mandatory for successful order synergization.</p>
+
+        <form id="createOrderForm">
+          <label>Customer ID <span style="color:#8b1c1c;">*</span></label>
+          <input type="text" id="customerId" value="kunde-42" placeholder="e.g. kunde-42">
+
+          <label>Shipping Region <span style="color:#8b1c1c;">*</span></label>
+          <select id="shippingRegion">
+            <option value="DOMESTIC">🏠 DOMESTIC (Germany) — €4.99</option>
+            <option value="EU">🇪🇺 EU (Europe) — €9.99</option>
+            <option value="INTERNATIONAL">🌍 INTERNATIONAL (World) — €19.99</option>
+          </select>
+
+          <hr class="section-rule">
+          <h3 style="margin:4px 0;">Line Items</h3>
+          <div id="items-container">
+            <div class="box" id="item-0" style="margin:4px 0; padding:8px; border-top-color:#2a4060;">
+              <div style="color:#c8960c; font-size:11px; font-family:Arial,sans-serif; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Line Item #1</div>
+              <label>Product ID</label>
+              <input type="text" class="item-productId" value="p1">
+              <label>Product Name</label>
+              <input type="text" class="item-productName" value="Widget">
+              <label>Quantity</label>
+              <input type="number" class="item-quantity" value="3" min="1">
+              <label>Unit Price (€)</label>
+              <input type="number" class="item-unitPrice" value="12.50" min="0" step="0.01">
+            </div>
+          </div>
+          <br>
+          <button type="button" onclick="addItem()">➕ Add Line Item</button>
+          &nbsp;
+          <input type="submit" value="🚀 Submit Order">
+        </form>
+
+        <div style="font-size:10px; color:#4a5a6a; margin-top:6px; font-family:'Courier New',monospace;">
+          Request Payload (JSON):
+        </div>
+        <div class="result-box" id="createOrderRaw">-- awaiting form submission --</div>
+        <div style="font-size:10px; color:#4a5a6a; margin-top:4px; font-family:'Courier New',monospace;">
+          Server Response:
+        </div>
+        <div class="result-box" id="createOrderResult">-- awaiting server response --</div>
+      </div>
+
+      <hr class="section-rule">
+
+      <!-- LOOKUP ORDER -->
+      <a name="lookup-order"></a>
+      <h2>🔍 Order Retrieval</h2>
+
+      <div class="box">
+        <h3>GET /orders/{id}</h3>
+        <form id="lookupOrderForm">
+          <label>Order ID <span style="color:#8b1c1c;">*</span></label>
+          <input type="text" id="lookupId" placeholder="Enter Order UUID...">
+          <br><br>
+          <input type="submit" value="🔍 Retrieve Order">
+        </form>
+        <div style="font-size:10px; color:#4a5a6a; margin-top:6px; font-family:'Courier New',monospace;">Result:</div>
+        <div class="result-box" id="lookupResult">-- enter order ID to retrieve --</div>
+      </div>
+
+      <hr class="section-rule">
+
+      <!-- GET TOTAL -->
+      <a name="get-total"></a>
+      <h2>💰 Total Cost Calculation</h2>
+
+      <div class="box">
+        <h3>GET /orders/{id}/total</h3>
+
+        <div style="background:#060e18; border:1px solid #2a4060; border-left:3px solid #c8960c; padding:8px; margin-bottom:8px; font-size:11px; font-family:Arial,sans-serif; color:#a09080;">
+          <span style="color:#c8960c; font-weight:bold;">📊 QUANTITY DISCOUNT RULES:</span><br>
+          • 3–4 units of same item: <span style="color:#40c040;">5% off that line</span><br>
+          • 5+ units of same item: <span style="color:#40c040;">10% off that line</span><br>
+          Discounts applied automatically on calculation.
+        </div>
+
+        <form id="totalForm">
+          <label>Order ID <span style="color:#8b1c1c;">*</span></label>
+          <input type="text" id="totalId" placeholder="Enter Order UUID...">
+
+          <label style="text-transform:none; letter-spacing:0; color:#a09080; display:flex; align-items:center; gap:6px; margin-top:8px;">
+            <input type="checkbox" id="expressShipping" style="width:auto; margin:0;">
+            ⚡ Express Shipping — Expedited Fulfillment
+          </label>
+
+          <label style="margin-top:8px;">🎟️ Coupon Code <span style="color:#5a6a7a; font-size:10px;">(optional)</span></label>
+          <input type="text" id="couponCode" placeholder="e.g. SOMMER10" style="text-transform:uppercase;">
+          <div style="font-size:10px; color:#4a6a8a; margin-top:2px; font-family:Arial,sans-serif;">
+            Demo codes: <span style="color:#c8960c; font-family:'Courier New',monospace;">SOMMER10</span> (10% off) &nbsp;|&nbsp;
+            <span style="color:#c8960c; font-family:'Courier New',monospace;">RABATT5</span> (€5 off, min. €20) &nbsp;|&nbsp;
+            <span style="color:#c8960c; font-family:'Courier New',monospace;">VIP20</span> (20% off, min. €50, exclusive)
+          </div>
+          <br>
+          <input type="submit" value="💰 Calculate Total">
+        </form>
+        <div style="font-size:10px; color:#4a5a6a; margin-top:6px; font-family:'Courier New',monospace;">Result:</div>
+        <div class="result-box" id="totalResult">-- enter order ID to calculate --</div>
+      </div>
+
+      <hr class="section-rule">
+
+      <!-- API DOCS IFRAME -->
+      <a name="api-docs"></a>
+      <h2>📜 API Documentation <span style="font-size:10px; font-weight:normal; color:#5a6a7a;">(inline frame technology)</span></h2>
+
+      <div class="box">
+        <p style="font-size:11px; color:#7a8a9a; font-family:Arial,sans-serif;">Select an endpoint below to load documentation inline — the future of enterprise knowledge management!!</p>
+
+        <table cellpadding="5" cellspacing="1" style="font-size:12px; width:100%; font-family:Arial,sans-serif;">
+          <tr style="background-color:#0a1420;">
+            <td style="color:#c8960c; font-weight:bold; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Method</td>
+            <td style="color:#c8960c; font-weight:bold; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Endpoint</td>
+            <td style="color:#c8960c; font-weight:bold; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Description</td>
+            <td style="color:#c8960c; font-weight:bold; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Docs</td>
+          </tr>
+          <tr style="background-color:#060e18;">
+            <td style="color:#40a040; font-family:'Courier New',monospace;">POST</td>
+            <td style="color:#c8960c; font-family:'Courier New',monospace;">/orders</td>
+            <td style="color:#a09080;">Create new order</td>
+            <td><a href="#" onclick="loadFrame('create-endpoint-info')">Load ▶</a></td>
+          </tr>
+          <tr style="background-color:#080f1c;">
+            <td style="color:#4a8aff; font-family:'Courier New',monospace;">GET</td>
+            <td style="color:#c8960c; font-family:'Courier New',monospace;">/orders/{id}</td>
+            <td style="color:#a09080;">Get order by ID</td>
+            <td><a href="#" onclick="loadFrame('get-endpoint-info')">Load ▶</a></td>
+          </tr>
+          <tr style="background-color:#060e18;">
+            <td style="color:#4a8aff; font-family:'Courier New',monospace;">GET</td>
+            <td style="color:#c8960c; font-family:'Courier New',monospace;">/orders/{id}/total</td>
+            <td style="color:#a09080;">Calculate total</td>
+            <td><a href="#" onclick="loadFrame('total-endpoint-info')">Load ▶</a></td>
+          </tr>
+        </table>
+
+        <br>
+        <div style="font-size:10px; color:#4a5a6a; font-family:Arial,sans-serif; margin-bottom:3px;">Inline Documentation Viewer (Proprietary Frame Technology™)</div>
+        <iframe name="apidocs" id="apidocs-frame" class="webcam"
+                src="about:blank"
+                width="100%" height="200"
+                style="margin-top:2px; background:#030810;">
+          Your browser does not support inline frames. Please upgrade to Netscape Navigator 4.0.
+        </iframe>
+        <br>
+        <div style="display:none;">
+          <div id="create-endpoint-info">
+            <html><body style="background:#030810;color:#80c060;font-family:'Courier New',monospace;font-size:11px;padding:10px;">
+            <b style="color:#c8960c;">POST /orders</b><br><br>
+            Creates a new enterprise order transaction.<br><br>
+            <b style="color:#a09080;">Request Body (JSON):</b><br>
+            {<br>
+            &nbsp; "customerId": "string",<br>
+            &nbsp; "shippingRegion": "DOMESTIC|EU|INTERNATIONAL",<br>
+            &nbsp; "items": [<br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "productId": "string",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "productName": "string",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "quantity": number,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "unitPrice": number<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; ]<br>
+            }<br><br>
+            <b style="color:#a09080;">Response:</b> 200 OK — Order JSON<br>
+            </body></html>
+          </div>
+          <div id="get-endpoint-info">
+            <html><body style="background:#030810;color:#80c060;font-family:'Courier New',monospace;font-size:11px;padding:10px;">
+            <b style="color:#c8960c;">GET /orders/{id}</b><br><br>
+            Retrieves order entity by UUID.<br><br>
+            <b style="color:#a09080;">Path Parameter:</b><br>
+            id — UUID string<br><br>
+            <b style="color:#a09080;">Response:</b><br>
+            200 OK — Order JSON<br>
+            404 Not Found — order does not exist<br>
+            </body></html>
+          </div>
+          <div id="total-endpoint-info">
+            <html><body style="background:#030810;color:#80c060;font-family:'Courier New',monospace;font-size:11px;padding:10px;">
+            <b style="color:#c8960c;">GET /orders/{id}/total</b><br><br>
+            Calculates total price with discounts and shipping costs.<br><br>
+            <b style="color:#a09080;">Path Parameter:</b><br>
+            id — UUID string<br><br>
+            <b style="color:#a09080;">Query Parameters:</b><br>
+            express (boolean, default: false) — express shipping surcharge<br>
+            coupon (string, optional) — discount coupon code<br><br>
+            <b style="color:#a09080;">Quantity Discount Rules (per line item):</b><br>
+            • 3–4 units: 5% off that line<br>
+            • 5+ units: 10% off that line<br><br>
+            <b style="color:#a09080;">Demo Coupon Codes:</b><br>
+            SOMMER10 — 10% off (stackable)<br>
+            RABATT5  — €5 off, min. €20 (stackable)<br>
+            VIP20    — 20% off, min. €50 (exclusive)<br><br>
+            <b style="color:#a09080;">Coupon Types:</b><br>
+            PERCENTAGE: % of subtotal after qty discounts<br>
+            FIXED_AMOUNT: flat deduction, min(value, subtotal)<br>
+            exclusive=true: only best of qty/coupon applies<br><br>
+            <b style="color:#a09080;">Response:</b><br>
+            200 OK — { "total": 42.00 }<br>
+            404 Not Found<br>
+            </body></html>
+          </div>
+        </div>
+      </div>
+
+      <hr class="section-rule">
+
+      <!-- GUESTBOOK -->
+      <a name="guestbook"></a>
+      <h2>📝 Client Testimonials &amp; Feedback Portal</h2>
+
+      <div class="box">
+        <p style="font-size:11px; color:#7a8a9a; font-family:Arial,sans-serif;">Share your enterprise experience with OrderMatic Pro™ 3000. Your feedback synergizes our continuous improvement initiatives.</p>
+
+        <form id="guestbookForm" onsubmit="signGuestbook(event)">
+          <label>Your Name / Handle</label>
+          <input type="text" id="gbName" placeholder="xXx_java_developer_xXx">
+          <label>Testimonial</label>
+          <textarea id="gbMessage" rows="3" style="background-color:#08111c; color:#c8a060; border:1px solid #2a4060; font-family:Arial,sans-serif; font-size:12px; width:98%; box-sizing:border-box; padding:4px;" placeholder="This enterprise solution has truly synergized our order workflow!! :-D"></textarea>
+          <br><br>
+          <input type="submit" value="✍️ Submit Testimonial">
+        </form>
+
+        <hr class="fancy">
+        <div style="font-size:11px; color:#c8960c; font-family:Arial,sans-serif; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Recent Client Feedback</div>
+        <div id="guestbook-entries">
+          <div class="guestbook-entry">
+            <span style="color:#c8960c; font-weight:bold; font-family:Arial,sans-serif;">CoolCoder1996</span>
+            <span style="color:#3a4a5a; font-size:10px; font-family:Arial,sans-serif;"> — June 3, 1996</span>
+            <br>
+            <span style="color:#a09080; font-family:Arial,sans-serif;">omg this site is SO kewl!! the visitor counter goes up every time i refresh!! :-)</span>
+          </div>
+          <div class="guestbook-entry">
+            <span style="color:#c8960c; font-weight:bold; font-family:Arial,sans-serif;">JavaDuke</span>
+            <span style="color:#3a4a5a; font-size:10px; font-family:Arial,sans-serif;"> — May 27, 1996</span>
+            <br>
+            <span style="color:#a09080; font-family:Arial,sans-serif;">nice REST API bro!! have u heard of this new thing called XML?? its gonna be HUGE!!</span>
+          </div>
+          <div class="guestbook-entry">
+            <span style="color:#c8960c; font-weight:bold; font-family:Arial,sans-serif;">WebmasterGuru</span>
+            <span style="color:#3a4a5a; font-size:10px; font-family:Arial,sans-serif;"> — May 15, 1996</span>
+            <br>
+            <span style="color:#a09080; font-family:Arial,sans-serif;">love the marquee tag!! very professional. bookmarked!! :-D</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="section-rule">
+
+      <!-- WEBCAM / IFRAME SECTION -->
+      <a name="webcam"></a>
+      <h2>📷 Server Infrastructure Monitoring <span class="blink" style="color:#8b1c1c; font-size:10px; font-family:Arial,sans-serif;">● LIVE FEED</span></h2>
+
+      <div class="box">
+        <p style="font-size:11px; color:#7a8a9a; font-family:Arial,sans-serif;">Real-time surveillance of our mission-critical server infrastructure. Refresh interval: 30 seconds.</p>
+
+        <table width="100%" cellspacing="8">
+          <tr>
+            <td style="text-align:center; width:50%;">
+              <iframe class="webcam" src="about:blank" width="200" height="150"
+                      id="webcam-frame"
+                      style="background:#030a03;">
+              </iframe>
+              <div style="font-size:10px; color:#3a4a5a; font-family:Arial,sans-serif; margin-top:3px;">Infrastructure Node #1</div>
+            </td>
+            <td style="text-align:center; width:50%;">
+              <div style="border:1px solid #2a4060; border-top:2px solid #c8960c; background-color:#030810; width:200px; height:150px; display:inline-flex; align-items:center; justify-content:center; flex-direction:column;">
+                <div style="font-size:36px;">🖥️</div>
+                <div style="color:#40c040; font-size:11px; font-family:'Courier New',monospace; text-align:left; margin-top:6px;">
+                  &gt; java -jar app.jar<br>
+                  &gt; Starting on :8080<br>
+                  &gt; <span class="blink">_</span>
+                </div>
+              </div>
+              <div style="font-size:10px; color:#3a4a5a; font-family:Arial,sans-serif; margin-top:3px;">Terminal Node #2</div>
+            </td>
+          </tr>
+        </table>
+
+        <div style="font-size:10px; color:#3a4a5a; margin-top:6px; text-align:center; font-family:Arial,sans-serif;">
+          Powered by WebCam32™ Enterprise v1.2 — Shockwave Plugin Required
+        </div>
+      </div>
+
+    </td>
+  </tr>
+</table>
+
+<!-- FOOTER -->
+<div class="footer">
+  <hr class="gold" style="width:100%;">
+  <div>
+    <img src="about:blank" width="88" height="31" alt="Netscape Now!" class="badge">
+    <img src="about:blank" width="88" height="31" alt="Java Powered!" class="badge">
+    <img src="about:blank" width="88" height="31" alt="Best viewed 800x600" class="badge">
+    <img src="about:blank" width="88" height="31" alt="Made with Notepad" class="badge">
+  </div>
+  <br>
+  © 1996 OrderMatic Pro™ 3000 — All Rights Reserved —
+  <a href="mailto:webmaster@ordermaticpro.com">webmaster@ordermaticpro.com</a>
+  <br>
+  This portal has been accessed <span id="footer-counter">1337</span> times since June 1996.
+  <br>
+  <span style="font-size:10px;">Optimized for Netscape Navigator 4.0+ at 800×600 resolution with 256 colors</span>
+  <br>
+  <span style="font-size:10px; color:#2a3a2a;">
+    OrderMatic Pro™ 3000 is powered by Java 21™ and Spring Boot 3.3.5™ — cutting-edge enterprise web technology<br>
+    *ISO 9001 certification application submitted Q2 1997
+  </span>
+</div>
+
+<script>
+var visits = parseInt(localStorage.getItem('om3000_visits') || '1337');
+visits++;
+localStorage.setItem('om3000_visits', visits);
+document.getElementById('counter').textContent = String(visits).padStart(6, '0');
+document.getElementById('footer-counter').textContent = visits;
+
+var itemCount = 1;
+
+function addItem() {
+  itemCount++;
+  var container = document.getElementById('items-container');
+  var div = document.createElement('div');
+  div.className = 'box';
+  div.id = 'item-' + (itemCount-1);
+  div.style.cssText = 'margin:4px 0; padding:8px; border-top-color:#2a4060;';
+  div.innerHTML = '<div style="color:#c8960c; font-size:11px; font-family:Arial,sans-serif; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Line Item #' + itemCount + '</div>' +
+    '<label>Product ID</label><input type="text" class="item-productId" value="p' + itemCount + '">' +
+    '<label>Product Name</label><input type="text" class="item-productName" value="Gadget">' +
+    '<label>Quantity</label><input type="number" class="item-quantity" value="1" min="1">' +
+    '<label>Unit Price (€)</label><input type="number" class="item-unitPrice" value="9.99" min="0" step="0.01">';
+  container.appendChild(div);
+}
+
+document.getElementById('createOrderForm').onsubmit = function(e) {
+  e.preventDefault();
+  var items = [];
+  var pids = document.querySelectorAll('.item-productId');
+  var pnames = document.querySelectorAll('.item-productName');
+  var qtys = document.querySelectorAll('.item-quantity');
+  var prices = document.querySelectorAll('.item-unitPrice');
+  for (var i = 0; i < pids.length; i++) {
+    items.push({
+      productId: pids[i].value,
+      productName: pnames[i].value,
+      quantity: parseInt(qtys[i].value),
+      unitPrice: parseFloat(prices[i].value)
+    });
+  }
+  var body = {
+    customerId: document.getElementById('customerId').value,
+    shippingRegion: document.getElementById('shippingRegion').value,
+    items: items
+  };
+  var raw = JSON.stringify(body, null, 2);
+  document.getElementById('createOrderRaw').textContent = raw;
+  document.getElementById('createOrderResult').textContent = 'Connecting to enterprise server... please wait...';
+  fetch('/orders', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: raw
+  }).then(function(r) {
+    return r.json().then(function(data) {
+      var txt = 'HTTP ' + r.status + '\n\n' + JSON.stringify(data, null, 2);
+      document.getElementById('createOrderResult').textContent = txt;
+      if (data.id) {
+        document.getElementById('lookupId').value = data.id;
+        document.getElementById('totalId').value = data.id;
+      }
+    });
+  }).catch(function(err) {
+    document.getElementById('createOrderResult').textContent = 'ERROR: ' + err + '\n\nEnsure Spring Boot is running on port 8080.';
+  });
+};
+
+document.getElementById('lookupOrderForm').onsubmit = function(e) {
+  e.preventDefault();
+  var id = document.getElementById('lookupId').value.trim();
+  document.getElementById('lookupResult').textContent = 'Retrieving order data...';
+  fetch('/orders/' + encodeURIComponent(id))
+    .then(function(r) {
+      return r.json().then(function(data) {
+        document.getElementById('lookupResult').textContent = 'HTTP ' + r.status + '\n\n' + JSON.stringify(data, null, 2);
+      });
+    }).catch(function(err) {
+      document.getElementById('lookupResult').textContent = 'ERROR: ' + err;
+    });
+};
+
+document.getElementById('totalForm').onsubmit = function(e) {
+  e.preventDefault();
+  var id = document.getElementById('totalId').value.trim();
+  var express = document.getElementById('expressShipping').checked;
+  var coupon = document.getElementById('couponCode').value.trim().toUpperCase();
+  document.getElementById('totalResult').textContent = 'Calculating enterprise total...';
+  var url = '/orders/' + encodeURIComponent(id) + '/total?express=' + express;
+  if (coupon) url += '&coupon=' + encodeURIComponent(coupon);
+  fetch(url)
+    .then(function(r) {
+      return r.json().then(function(data) {
+        var txt = 'HTTP ' + r.status + '\n\n' + JSON.stringify(data, null, 2);
+        if (data.total !== undefined) {
+          txt += '\n\n╔══════════════════════════╗';
+          txt += '\n║  💰 TOTAL: €' + parseFloat(data.total).toFixed(2).padStart(12) + '  ║';
+          txt += '\n╚══════════════════════════╝';
+          if (express) txt += '\n   ⚡ Express shipping included';
+          if (coupon) txt += '\n   🎟️ Coupon applied: ' + coupon;
+        }
+        document.getElementById('totalResult').textContent = txt;
+      });
+    }).catch(function(err) {
+      document.getElementById('totalResult').textContent = 'ERROR: ' + err;
+    });
+};
+
+function signGuestbook(e) {
+  e.preventDefault();
+  var name = document.getElementById('gbName').value.trim() || 'Anonymous Client';
+  var msg = document.getElementById('gbMessage').value.trim();
+  if (!msg) return;
+  var entry = document.createElement('div');
+  entry.className = 'guestbook-entry';
+  entry.innerHTML = '<span style="color:#c8960c; font-weight:bold; font-family:Arial,sans-serif;">' + name + '</span>' +
+    '<span style="color:#3a4a5a; font-size:10px; font-family:Arial,sans-serif;"> — Just now</span><br>' +
+    '<span style="color:#a09080; font-family:Arial,sans-serif;">' + msg.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</span>';
+  var entries = document.getElementById('guestbook-entries');
+  entries.insertBefore(entry, entries.firstChild);
+  document.getElementById('gbName').value = '';
+  document.getElementById('gbMessage').value = '';
+}
+
+function loadFrame(sectionId) {
+  var frame = document.getElementById('apidocs-frame');
+  var content = document.getElementById(sectionId);
+  if (content) {
+    frame.srcdoc = content.innerHTML;
+  }
+  return false;
+}
+
+var webcamFrame = document.getElementById('webcam-frame');
+var asciiFrames = [
+  '<html><body style="background:#030a03;color:#40c040;font-family:\'Courier New\';font-size:10px;margin:4px;"><pre>  [SERVER ROOM]\n  ____________\n |  ________  |\n | |  JAVA  | |\n | |  RUNN  | |\n | |________|_|\n |____________|\n  Temp: 38°C\n  Load: ████░ 78%</pre></body></html>',
+  '<html><body style="background:#030a03;color:#40c040;font-family:\'Courier New\';font-size:10px;margin:4px;"><pre>  [SERVER ROOM]\n  ____________\n |  ________  |\n | | SPRING | |\n | |  BOOT  | |\n | |________|_|\n |____________|\n  Temp: 39°C\n  Load: ███░░ 62%</pre></body></html>',
+  '<html><body style="background:#030a03;color:#40c040;font-family:\'Courier New\';font-size:10px;margin:4px;"><pre>  [SERVER ROOM]\n  ____________\n |  ________  |\n | | ORDER  | |\n | | SAVED! | |\n | |________|_|\n |____________|\n  Temp: 37°C\n  Load: █████ 95%</pre></body></html>'
+];
+var frameIdx = 0;
+function updateWebcam() {
+  webcamFrame.srcdoc = asciiFrames[frameIdx % asciiFrames.length];
+  frameIdx++;
+}
+updateWebcam();
+setInterval(updateWebcam, 3000);
+
+fetch('/orders/healthcheck-will-404-thats-fine').catch(function(){}).then(function(){
+  document.getElementById('server-status').textContent = '● ONLINE';
+  document.getElementById('server-status').style.color = '#40c040';
+});
+</script>
+
+</body>
+</html>
